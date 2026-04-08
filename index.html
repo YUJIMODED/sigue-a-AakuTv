@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaku | streamer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    background: radial-gradient(circle at top, #0d0d18, #000);
+    font-family:'Inter',sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.bg{
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(0,255,255,0.06), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(255,0,255,0.06), transparent 40%);
+    animation:move 12s infinite linear;
+}
+
+@keyframes move{
+    0%{transform:translate(0,0);}
+    50%{transform:translate(-8%,-6%);}
+    100%{transform:translate(0,0);}
+}
+
+.container{
+    position:relative;
+    width:90%;
+    max-width:420px;
+    padding:40px 30px;
+    border-radius:26px;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(30px);
+    text-align:center;
+    z-index:2;
+
+    opacity:0;
+    transform:translateY(30px) scale(0.95);
+    animation:fadeIn 1s ease forwards;
+
+    box-shadow:
+        0 0 80px rgba(0,0,0,0.9),
+        inset 0 0 40px rgba(255,255,255,0.03),
+        0 0 25px rgba(0,255,255,0.08);
+
+    animation:
+        fadeIn 1s ease forwards,
+        float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn{
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+}
+
+.title{
+    font-family:'Orbitron',sans-serif;
+    font-size:32px;
+    letter-spacing:3px;
+    margin-bottom:8px;
+    animation:fadeText 1.5s ease;
+}
+
+@keyframes fadeText{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.line{
+    width:60px;
+    height:2px;
+    margin:10px auto 25px;
+    background:linear-gradient(90deg, transparent, #00f0ff, transparent);
+}
+
+.subtitle{
+    font-size:13px;
+    color:#9a9a9a;
+    margin-bottom:30px;
+}
+
+.btn{
+    width:100%;
+    padding:16px;
+    margin:12px 0;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(0,0,0,0.45);
+    color:white;
+    font-weight:600;
+    letter-spacing:1px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:all .3s ease;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    width:140%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+    top:0;
+    left:-140%;
+    transition:.6s;
+}
+
+.btn:hover::before{
+    left:100%;
+}
+
+.btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 0 25px rgba(255,255,255,0.15);
+}
+
+.btn:active{
+    transform:scale(0.96);
+    box-shadow:0 0 10px rgba(255,255,255,0.1);
+}
+
+.btn-small{
+    margin-top:15px;
+    padding:10px;
+    font-size:12px;
+    opacity:0.6;
+    border-radius:12px;
+    animation:pulse 3s infinite;
+}
+
+.btn-small:hover{
+    opacity:1;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:0.5;}
+    50%{opacity:0.9;}
+}
+
+.tiktok:hover{border-color:#00f2ea;}
+.discord:hover{border-color:#5865F2;}
+.instagram:hover{border-color:#ff2bd6;}
+.youtube:hover{border-color:#ff0000;}
+.twitter:hover{border-color:#1DA1F2;}
+.twitch:hover{border-color:#9146FF;}
+
+.footer{
+    margin-top:20px;
+    font-size:11px;
+    color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="container">
+
+    <div class="title">AAKU</div>
+    <div class="line"></div>
+    <div class="subtitle">Streaming Creator • Aaku</div>
+
+    <!-- ORDEN NUEVO -->
+    <button class="btn twitch" onclick="go('https://m.twitch.tv/AakuTv')">Twitch</button>
+    <button class="btn instagram" onclick="go('https://www.instagram.com/aaku.tv/')">Instagram</button>
+    <button class="btn tiktok" onclick="go('https://vm.tiktok.com/ZS98vnXRY39uR-Sn5hE/')">TikTok</button>
+    <button class="btn youtube" onclick="go('https://m.youtube.com/@ElAaku666#bottom-sheet')">YouTube</button>
+    <button class="btn discord" onclick="go('https://discord.com/invite/2vY8wg6bAc')">Discord</button>
+    <button class="btn twitter" onclick="go('https://x.com/Elvergone666')">X / Twitter</button>
+
+    <button class="btn btn-small" onclick="go('https://tiktok.com/@manuel_mods_games')">
+        Created by Manuel mods
+    </button>
+
+    <div class="footer">© 2026 Manuel mods</div>
+
+</div>
+
+<script>
+function go(url){
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
